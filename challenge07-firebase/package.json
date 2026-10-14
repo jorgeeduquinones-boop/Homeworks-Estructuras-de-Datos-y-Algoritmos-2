@@ -1,5 +1,5 @@
 {
-  "name": "challenge06-react",
+  "name": "challenge07-firebase",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^13.0.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.4"
+    "react-router-dom": "^7.18.4",
+    "sass": "^1.105.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
