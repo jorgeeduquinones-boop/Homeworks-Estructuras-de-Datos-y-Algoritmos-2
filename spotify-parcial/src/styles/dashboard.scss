@@ -1,0 +1,157 @@
+$bg-dark: #121212;
+$bg-card: #181818;
+$bg-card-hover: #282828;
+$bg-input: #242424;
+$spotify-green: #1db954;
+$spotify-green-hover: #1ed760;
+$text-primary: #ffffff;
+$text-secondary: #b3b3b3;
+$radius-md: 10px;
+$radius-pill: 20px;
+
+@mixin flex-between($gap: 0.75rem) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin card-container {
+  background-color: $bg-card;
+  border-radius: $radius-md;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+%pill-badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: $radius-pill;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-dark;
+  color: $text-primary;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.dashboard {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+
+  &__header {
+    @include flex-between();
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba($text-secondary, 0.15);
+    padding-bottom: 1rem;
+
+    h1 {
+      color: $spotify-green;
+      font-size: 1.8rem;
+    }
+
+    span {
+      @extend %pill-badge;
+      background-color: rgba($spotify-green, 0.15);
+      color: $spotify-green;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.panel-card {
+  @include card-container;
+
+  h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    color: $text-primary;
+  }
+
+  .search-input,
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: $radius-pill;
+    border: 1px solid transparent;
+    background-color: $bg-input;
+    color: $text-primary;
+    margin-bottom: 0.8rem;
+    outline: none;
+
+    &:focus {
+      border-color: $spotify-green;
+    }
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: $radius-pill;
+    background-color: $spotify-green;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $spotify-green-hover;
+    }
+  }
+}
+
+.song-list {
+  list-style: none;
+  margin-top: 1rem;
+
+  &__item {
+    @include flex-between();
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover,
+    &.active {
+      background-color: $bg-card-hover;
+    }
+
+    .badge-plays {
+      @extend %pill-badge;
+      background-color: rgba($spotify-green, 0.2);
+      color: $spotify-green;
+    }
+
+    .badge-tag {
+      @extend %pill-badge;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: $text-secondary;
+    }
+  }
+}
+
+.status-text {
+  font-size: 0.85rem;
+  color: $text-secondary;
+  margin-top: 0.5rem;
+
+  strong {
+    color: $spotify-green;
+  }
+}
